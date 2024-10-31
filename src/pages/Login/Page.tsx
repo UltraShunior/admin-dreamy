@@ -1,20 +1,12 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/clerk-react";
+import { SignedOut, SignIn } from "@clerk/clerk-react";
 
 export function LoginPage() {
   return (
     <>
-      <header className="flex justify-end items-center p-4">
+      <header className="mt-[calc(50vh-20rem)] flex justify-center items-center p-4">
         <SignedOut>
-          <SignInButton />
+          <SignIn />
         </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
       </header>
     </>
   );

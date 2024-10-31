@@ -1,31 +1,38 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useAuth } from "@clerk/clerk-react";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/Home/Page";
+import { SidebarProvider } from "./context/SidebarContext";
+import { ThemeProvider } from "./context/ThemeContext";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import LoginPage from "./pages/Login/Page";
-import Loader from "./components/Loader";
+import BillboardPage from "./pages/Billboard/Page";
 
-export default function AppRouter() {
-  const { isSignedIn, isLoaded } = useAuth();
-
-  // Muestra un loader mientras Clerk inicializa
-  if (!isLoaded) {
-    return <Loader color="warning" />;
-  }
-
+export function AppRouter() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Public routes */}
-        <Route
-          path="/login"
-          element={isSignedIn ? <Navigate to="/" /> : <LoginPage />}
-        />
-        {/* Private routes */}
-        <Route
-          path="/"
-          element={isSignedIn ? <HomePage /> : <Navigate to="/login" />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+      <SidebarProvider>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/"
+            element={<ProtectedRoute children={<HomePage />} />}
+          />
+          <Route
+            path="/billboard"
+            element={<ProtectedRoute children={<BillboardPage />} />}
+          />
+        </Routes>
+      </SidebarProvider>
+    </ThemeProvider>
   );
 }
+
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <>
+      <SignedIn>{children}</SignedIn>
+      <SignedOut>
+        <LoginPage />
+      </SignedOut>
+    </>
+  );
+};
