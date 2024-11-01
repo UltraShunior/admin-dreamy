@@ -1,10 +1,11 @@
 import { Layout } from "../../layout";
+import BillboardTable from "./components/BillboardTable";
 
 export function BillboardPage() {
   return (
     <Layout activeRoute="Billboard">
-      <div className="h-screen w-full bg-black flex justify-center items-center">
-        BillboardPage
+      <div className="min-h-screen w-[80%] mx-auto p-6">
+        <BillboardTable />
       </div>
     </Layout>
   );

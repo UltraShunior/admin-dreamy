@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.main-gradient {
+  background: linear-gradient(to left top, #09090b 0%, #1e1b4b 35%, #000 75%);
+}

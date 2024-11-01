@@ -1,9 +1,9 @@
-import Header from "./components/Header";
+import Header from "@components/Header";
 import {
   Sidebar,
   SidebarItem,
   CollapsibleSidebarItem,
-} from "./components/SidebarMenu";
+} from "@components/SidebarMenu";
 import {
   Home,
   LayoutPanelTop,
@@ -64,6 +64,7 @@ interface LayoutProps {
 export const Layout = memo(({ children, activeRoute }: LayoutProps) => {
   const { isOpen } = useSidebar();
   const isMobile = useMediaQuery({ maxWidth: 768 });
+
   return (
     <>
       <Header />
@@ -78,7 +79,7 @@ export const Layout = memo(({ children, activeRoute }: LayoutProps) => {
         <FolderSection />
       </Sidebar>
       <main
-        className={`mt-[4rem] z-10 ${
+        className={`py-[4rem] z-10 ${
           isOpen && !isMobile ? "ml-[15rem]" : "ml-[4.4rem]"
         } transition-margin duration-300`}
       >
@@ -86,16 +87,15 @@ export const Layout = memo(({ children, activeRoute }: LayoutProps) => {
           <SparklesCore
             id="tsparticlesfullpage"
             background="transparent"
-            minSize={0.6}
-            maxSize={1.4}
-            particleDensity={100}
+            minSize={0.2}
+            maxSize={1.8}
+            particleDensity={5}
             className="w-full h-full"
-            particleColor="#FFFFFF"
+            particleColor={"#8176f2"}
           />
         </div>
         {children}
       </main>
-      <div className="hidden fixed top-screen right-[30%] -z-5 h-[31rem] w-[44rem] rounded-full blur-[18rem] dark:block dark:bg-[#8176f2] max-sm:h-[20rem] max-sm:right-[4rem] max-sm:top-[12rem] sm:w-[44rem] sm:h-[20rem] "></div>
     </>
   );
 });
