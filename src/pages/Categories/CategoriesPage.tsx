@@ -4,7 +4,9 @@ import CategoriesTable from "./components/CategoriesTable";
 export function CategoriesPage() {
   return (
     <Layout activeRoute="Categories">
-      <CategoriesTable />
+      <div className="w-[70%] h-full">
+        <CategoriesTable />
+      </div>
     </Layout>
   );
 }

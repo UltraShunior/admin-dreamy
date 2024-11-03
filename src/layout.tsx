@@ -4,6 +4,7 @@ import {
   SidebarItem,
   CollapsibleSidebarItem,
 } from "@components/SidebarMenu";
+import Footer from "@components/Footer";
 import {
   Home,
   LayoutPanelTop,
@@ -79,7 +80,7 @@ export const Layout = memo(({ children, activeRoute }: LayoutProps) => {
         <FolderSection />
       </Sidebar>
       <main
-        className={`py-[4rem] z-10 ${
+        className={`py-[4rem] min-h-[70vh] flex justify-center z-10 ${
           isOpen && !isMobile ? "ml-[15rem]" : "ml-[4.4rem]"
         } transition-margin duration-300`}
       >
@@ -96,6 +97,11 @@ export const Layout = memo(({ children, activeRoute }: LayoutProps) => {
         </div>
         {children}
       </main>
+      <Footer
+        className={`${
+          isOpen && !isMobile ? "ml-[15rem]" : "ml-[4rem]"
+        } transition-margin duration-300 flex justify-center items-center`}
+      />
     </>
   );
 });

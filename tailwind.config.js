@@ -10,6 +10,9 @@ module.exports = {
   theme: {
     extend: {
       "header-transition": "width 0.3s ease, left 0.3s ease",
+      colors: {
+        primary: "indigo-900",
+      },
     },
   },
   darkMode: "class",
