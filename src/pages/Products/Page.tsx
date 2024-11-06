@@ -4,7 +4,9 @@ import { Layout } from "@/layout";
 export function ProductsPage() {
   return (
     <Layout activeRoute="Products">
-      <ProductsTable />
+      <div className="w-[70%] h-full">
+        <ProductsTable />
+      </div>
     </Layout>
   );
 }
